@@ -1,0 +1,33 @@
+info:
+  title: Task Organizer
+  description: Organize and maintain tasks
+servers:
+  - url: https://lavanyas-5000.theiadocker-1-labs-prod-theiak8s-4-tor01.proxy.cognitiveclass.ai/
+    description: A hand-on lab server
+paths:
+  /tasks:
+    summary: Get Tasks
+    description: get list of all tasks
+    produces:
+      - application/json
+    responses:
+      '200':
+        description: Successfully fetched tasks
+      '405':
+        description: Invalid Input
+  /tasks/{taskname}:
+    tags:
+      - Task name
+    summary: Returns a tasks by name.
+    parameters:
+      - in: path
+        name: taskname
+        required: true
+        type: string
+        minimum: 1
+        description: Name of the task to be obtained
+    responses:
+      '200':
+        description: Successfully fetched task
+      '405':
+        description: Invalid Input
